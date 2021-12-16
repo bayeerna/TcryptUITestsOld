@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TcryptUITests" GeneratedClassName="Properties">
+  <Profiles />
+  <Settings>
+    <Setting Name="LoginPage" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://energy.dev.tcrypt.ru/</Value>
+    </Setting>
+    <Setting Name="Login" Type="System.String" Scope="User">
+      <Value Profile="(Default)">uprobr_znaniya@mail.ru</Value>
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)">12345678</Value>
+    </Setting>
+    <Setting Name="Inn_Prikaz" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1699171951</Value>
+    </Setting>
+    <Setting Name="TimeLimit" Type="System.String" Scope="User">
+      <Value Profile="(Default)">15</Value>
+    </Setting>
+    <Setting Name="NameOfPrikaz" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Приказ</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
