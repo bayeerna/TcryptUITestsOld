@@ -25,7 +25,7 @@ namespace TcryptUITests {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://energy.dev.tcrypt.ru/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://pre.tcrypt.ru/")]
         public string LoginPage {
             get {
                 return ((string)(this["LoginPage"]));
