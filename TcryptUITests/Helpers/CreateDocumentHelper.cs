@@ -181,7 +181,7 @@ namespace Taxnet.Tcrypt.Autotests
                     break;
 
                 case "Договор безвозмездного пользования":
-                    IWebElement status2 = driver.FindElement(By.XPath("//*[contains(text(), 'Договор безвозмездного пользования')]"));
+                    IWebElement status2 = driver.FindElement(By.CssSelector("//*[contains(text(), 'Договор безвозмездного пользования')]"));
                     actions.MoveToElement(status2).Click().Build().Perform();
                     break;
             }

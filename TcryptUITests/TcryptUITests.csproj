@@ -68,14 +68,15 @@
   <ItemGroup>
     <Compile Include="Data\FilesData.cs" />
     <Compile Include="Data\OrgInfo.cs" />
+    <Compile Include="Fixtures\IncomingDocumentsFixture.cs" />
     <Compile Include="Fixtures\MessageProcessingFixture.cs" />
-    <Compile Include="Fixtures\EDOFixtures.cs" />
-    <Compile Include="Fixtures\SendingUnformalizedXmlFileFixture.cs" />
+    <Compile Include="Fixtures\MDOFixture.cs" />
     <Compile Include="Helpers\ApplicationManager.cs" />
     <Compile Include="Helpers\CreateDocumentHelper.cs" />
     <Compile Include="Bases\HelperBase.cs" />
     <Compile Include="Helpers\AuthoritiesHelper.cs" />
-    <Compile Include="Helpers\EdoHelper.cs" />
+    <Compile Include="Helpers\MDOHelper.cs" />
+    <Compile Include="Helpers\IncomingDocumentsHelper.cs" />
     <Compile Include="Helpers\LoginHelper.cs" />
     <Compile Include="Helpers\MessageProcessingHelper.cs" />
     <Compile Include="Helpers\PrintFormsHelper.cs" />
@@ -85,7 +86,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Properties.settings</DependentUpon>
     </Compile>
-    <Compile Include="Fixtures\SendDocumentsTests.cs" />
+    <Compile Include="Fixtures\SendIngDocumentsFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

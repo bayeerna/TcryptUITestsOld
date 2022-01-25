@@ -147,6 +147,23 @@ namespace Taxnet.Tcrypt.Autotests
             app.CreateDocuments.ClickSendDocumentButton();
         }
 
-        
+        [Test]
+        public void SendingUnformalizedXmlFile()
+        {
+            app.Auth
+                .OpenLoginPage()
+                .LoginByCert("Саянова Кристина")
+                .CloseTrainingPage();
+            app.CreateDocuments
+                .ClickCreateDocumentButton()
+                .ClickClearButton()
+                .SelectRecipient(INN, nameOfDepartment, nameOfOrganisation)
+                .UploadDocument(FilesData.UnformalizedFiles + FilesData.UnformalizedXmlFile)
+                .CloseInfoModalWindow()
+                .CheckFileUploaded(FilesData.UnformalizedXmlFile)
+                .ClickSendDocumentButton();
+        }
+
+
     }
 }
