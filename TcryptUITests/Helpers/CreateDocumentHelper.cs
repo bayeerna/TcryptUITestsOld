@@ -30,6 +30,7 @@ namespace Taxnet.Tcrypt.Autotests
         /// </summary>
         public CreateDocumentHelper ClickCreateDocumentButton()
         {
+            Thread.Sleep(1000);
             driver.FindElements(By.XPath("//a[@id='create-document-js']"))[1].Click();
             var currentSelector = By.XPath("//*[contains(text(), 'Подождите, идет загрузка')]");
             WaitUntilElementIsNotVisible(currentSelector, 40);
@@ -94,6 +95,7 @@ namespace Taxnet.Tcrypt.Autotests
             GetElement(recipientField).SendKeys(INN);
 
             //Выбор из списка
+            Thread.Sleep(10000);
             var recipient = By.XPath("//*[contains(text(),'" + nameOfOrganisation + "')]");
             WaitForElementIsVisible(recipient, 10);
             GetElement(recipient).Click();
@@ -187,7 +189,7 @@ namespace Taxnet.Tcrypt.Autotests
         }
 
 
-        public CreateDocumentHelper StopMessageProcessing()
+        /*public CreateDocumentHelper StopMessageProcessing()
         {
             var currentSelector = By.XPath("//button[.='Остановить']");
             IWebElement stopMessageProcessingButton = driver.FindElement(currentSelector);
@@ -203,7 +205,7 @@ namespace Taxnet.Tcrypt.Autotests
 
             }
             return this;
-        }
+        }*/
     }
     }
 

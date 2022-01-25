@@ -26,7 +26,7 @@
     class SendingUnformalizedXmlFileFixture : TestBase
     {
         string nameOfOrganisation = "Приказ";
-        string INN = Properties.Default.Inn_Prikaz;
+        string INN = Properties.Default.Inn_KZIO;
         string nameOfDepartment = "Головное подразделение";
 
         [Test]

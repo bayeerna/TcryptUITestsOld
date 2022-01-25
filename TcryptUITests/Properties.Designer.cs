@@ -25,7 +25,7 @@ namespace TcryptUITests {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://pre.tcrypt.ru/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://v20.tcrypt.ru/")]
         public string LoginPage {
             get {
                 return ((string)(this["LoginPage"]));
@@ -61,13 +61,13 @@ namespace TcryptUITests {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1699171951")]
-        public string Inn_Prikaz {
+        [global::System.Configuration.DefaultSettingValueAttribute("1699305370")]
+        public string Inn_KZIO {
             get {
-                return ((string)(this["Inn_Prikaz"]));
+                return ((string)(this["Inn_KZIO"]));
             }
             set {
-                this["Inn_Prikaz"] = value;
+                this["Inn_KZIO"] = value;
             }
         }
         
@@ -85,13 +85,13 @@ namespace TcryptUITests {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Приказ")]
-        public string NameOfPrikaz {
+        [global::System.Configuration.DefaultSettingValueAttribute("КЗИО")]
+        public string NameOfKZIO {
             get {
-                return ((string)(this["NameOfPrikaz"]));
+                return ((string)(this["NameOfKZIO"]));
             }
             set {
-                this["NameOfPrikaz"] = value;
+                this["NameOfKZIO"] = value;
             }
         }
     }

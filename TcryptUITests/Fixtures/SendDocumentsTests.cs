@@ -18,8 +18,8 @@ namespace Taxnet.Tcrypt.Autotests
     [TestFixture]
     public class SendDocumentsTests : TestBase
     {
-        string nameOfOrganisation = "Приказ";
-        string INN = Properties.Default.Inn_Prikaz;
+        string nameOfOrganisation = "КЗИО";
+        string INN = Properties.Default.Inn_KZIO;
         string nameOfDepartment = "Головное подразделение";
         /// <summary>
         /// Создание черновика по логину
@@ -28,9 +28,10 @@ namespace Taxnet.Tcrypt.Autotests
         public void CreateDraftByLogin()
         {
             app.Auth.OpenLoginPage()
-                    .LoginByEmail("Саянова Кристина");
-                    //.CloseTrainingPage();
-            app.CreateDocuments.ClickCreateDocumentButton()
+                    .LoginByEmail("Саянова Кристина")
+                    .CloseTrainingPage();
+            app.CreateDocuments
+                               .ClickCreateDocumentButton()
                                .ClickClearButton()
                                .SelectRecipient(INN, nameOfDepartment, nameOfOrganisation)
                                .UploadDocument(FilesData.UnformalizedFiles + FilesData.UnformalizedTxtFile)
@@ -45,8 +46,8 @@ namespace Taxnet.Tcrypt.Autotests
         public void SendDocumentTxt()
         {
             app.Auth.OpenLoginPage()
-                    .LoginByCert("BBDC0697DF99B86D96BD0F36EA6448D1F95045DC");
-                    //.CloseTrainingPage();
+                    .LoginByCert("Саянова Кристина")
+                    .CloseTrainingPage();
             app.CreateDocuments//.StopMessageProcessing()
                                .ClickCreateDocumentButton()
                                .ClickClearButton()
@@ -62,8 +63,8 @@ namespace Taxnet.Tcrypt.Autotests
         public void SendDocumentPdf()
         {
             app.Auth.OpenLoginPage()
-                    .LoginByCert("Саянова Кристина");
-                    //.CloseTrainingPage();
+                    .LoginByCert("Саянова Кристина")
+                    .CloseTrainingPage();
             app.CreateDocuments//.StopMessageProcessing()
                                .ClickCreateDocumentButton()
                                .ClickClearButton()
@@ -79,8 +80,8 @@ namespace Taxnet.Tcrypt.Autotests
         public void SendDocumentSF()
         {
             app.Auth.OpenLoginPage()
-                    .LoginByCert("Саянова Кристина");
-                    //.CloseTrainingPage();
+                    .LoginByCert("Саянова Кристина")
+                    .CloseTrainingPage();
             app.CreateDocuments//.StopMessageProcessing()
                                .ClickCreateDocumentButton()
                                .ClickClearButton()
@@ -97,8 +98,8 @@ namespace Taxnet.Tcrypt.Autotests
         public void SendDocumentUPD()
         {
             app.Auth.OpenLoginPage()
-                    .LoginByCert("Саянова Кристина");
-                    //.CloseTrainingPage();
+                    .LoginByCert("Саянова Кристина")
+                    .CloseTrainingPage();
             app.CreateDocuments//.StopMessageProcessing()
                                .ClickCreateDocumentButton()
                                .ClickClearButton()
@@ -117,8 +118,8 @@ namespace Taxnet.Tcrypt.Autotests
         public void SendDocumentKSF()
         {
             app.Auth.OpenLoginPage()
-                    .LoginByCert("Саянова Кристина");
-                    //.CloseTrainingPage();
+                    .LoginByCert("Саянова Кристина")
+                    .CloseTrainingPage();
             app.CreateDocuments//.StopMessageProcessing()
                                .ClickCreateDocumentButton()
                                .ClickClearButton()
@@ -135,8 +136,8 @@ namespace Taxnet.Tcrypt.Autotests
         public void SendDocumentUKD()
         {
             app.Auth.OpenLoginPage()
-                    .LoginByCert("Саянова Кристина");
-                    //.CloseTrainingPage();
+                    .LoginByCert("Саянова Кристина")
+                    .CloseTrainingPage();
             app.CreateDocuments//.StopMessageProcessing()
                                .ClickCreateDocumentButton()
                                .ClickClearButton()

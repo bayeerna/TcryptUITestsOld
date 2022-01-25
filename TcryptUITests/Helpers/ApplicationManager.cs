@@ -21,7 +21,7 @@ namespace Taxnet.Tcrypt.Autotests
         protected CreateDocumentHelper _createDocumentHelper;
         protected AuthoritiesHelper _authoritiesHelper;
         protected PrintFormsHelper _printFormHelper;
-        protected MessageProcessingHelper messageProcessingHelper;
+        //protected MessageProcessingHelper messageProcessingHelper;
 
         public ApplicationManager()
 
@@ -33,7 +33,7 @@ namespace Taxnet.Tcrypt.Autotests
             _createDocumentHelper = new CreateDocumentHelper(this);
             _authoritiesHelper = new AuthoritiesHelper(this);
             _printFormHelper = new PrintFormsHelper(this);
-            messageProcessingHelper = new MessageProcessingHelper(this);
+            //messageProcessingHelper = new MessageProcessingHelper(this);
         }
 
         public IWebDriver Driver
@@ -86,13 +86,13 @@ namespace Taxnet.Tcrypt.Autotests
             }
         }
 
-        public MessageProcessingHelper MessageProcessing
+        /*public MessageProcessingHelper MessageProcessing
         {
             get
             {
                 return messageProcessingHelper;
             }
-        }
+        }*/
 
     }
 }

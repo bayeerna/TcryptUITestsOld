@@ -17,19 +17,15 @@ namespace Taxnet.Tcrypt.Autotests
         {
             app.Auth
                 .OpenLoginPage()
-                .LoginByCert(specOfKometet)
+                .LoginByCert(specOfKomitet)
                 .CloseTrainingPage();
             app.CreateDocuments
-               .StopMessageProcessing()
+               //.StopMessageProcessing()
                .ClickCreateDocumentButton()
                .GoToEdoPage()
             .SelectTypeOfEdo("Договор оперативного управления");
             Thread.Sleep(10000);
-
         }
-
-
-
-        private string specOfKometet = "Ефимов Тихон Павлович";
+        private string specOfKomitet = "Ефимов Тихон Павлович";
     }
 }

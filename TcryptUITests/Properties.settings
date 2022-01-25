@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="LoginPage" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://pre.tcrypt.ru/</Value>
+      <Value Profile="(Default)">https://v20.tcrypt.ru/</Value>
     </Setting>
     <Setting Name="Login" Type="System.String" Scope="User">
       <Value Profile="(Default)">uprobr_znaniya@mail.ru</Value>
@@ -11,14 +11,14 @@
     <Setting Name="Password" Type="System.String" Scope="User">
       <Value Profile="(Default)">12345678</Value>
     </Setting>
-    <Setting Name="Inn_Prikaz" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1699171951</Value>
+    <Setting Name="Inn_KZIO" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1699305370</Value>
     </Setting>
     <Setting Name="TimeLimit" Type="System.String" Scope="User">
       <Value Profile="(Default)">15</Value>
     </Setting>
-    <Setting Name="NameOfPrikaz" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Приказ</Value>
+    <Setting Name="NameOfKZIO" Type="System.String" Scope="User">
+      <Value Profile="(Default)">КЗИО</Value>
     </Setting>
   </Settings>
 </SettingsFile>

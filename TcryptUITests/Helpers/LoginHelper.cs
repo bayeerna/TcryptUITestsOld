@@ -72,8 +72,8 @@ namespace Taxnet.Tcrypt.Autotests
         public LoginHelper CloseTrainingPage()
         {
             var closeTrainingButton = By.XPath("//button[.='Пропустить']");
-            WaitForElementIsVisible(closeTrainingButton, 25);
-            WaitForElementToBeClickable(closeTrainingButton, 25);
+            WaitForElementIsVisible(closeTrainingButton, 100);
+            WaitForElementToBeClickable(closeTrainingButton, 100);
 
             driver.FindElement(closeTrainingButton).Click();
 
