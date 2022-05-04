@@ -17,60 +17,56 @@ namespace Taxnet.Tcrypt.Autotests
     public class IncomingDocumentsHelper : HelperBase
     {
         public IncomingDocumentsHelper(ApplicationManager manager)
-            : base(manager)
+            : base(manager) {}
+
+        /// <summary>
+        /// Переход к карточке документа
+        /// </summary>
+        public IncomingDocumentsHelper GoToCardOfDocument()
         {
+            //driver.FindElements(By.XPath("//*[@id=intro-inbox-aside-link"))[1].Click();
+            var currentSelector = By.XPath("//*[contains(text(), 'Загрузка документов')]");
+            WaitUntilElementIsNotVisible(currentSelector, 40);
+            GetElement(By.XPath("//*[contains(text(),'.doc')]")).Click();
+
+            var btnAccept = By.XPath("//button[.='Подписать']");
+            WaitForElementIsVisible(btnAccept,15);
+            GetElement(By.XPath("//button[.='Подписать']")).Click();
+
+            var loading = By.CssSelector("loading-overlay--div");
+            WaitForElementIsVisible(loading, 15);
+            return this;
         }
 
-            /// <summary>
-            /// Переход к карточке документа
-            /// </summary>
-            public IncomingDocumentsHelper GoToCardOfDocument()
-            {
-                //driver.FindElements(By.XPath("//*[@id=intro-inbox-aside-link"))[1].Click();
-                var currentSelector = By.XPath("//*[contains(text(), 'Загрузка документов')]");
-                WaitUntilElementIsNotVisible(currentSelector, 40);
-                GetElement(By.XPath("//*[contains(text(),'.doc')]")).Click();
+        /// <summary>
+        /// Подписание документа в карточке
+        /// </summary>
+        public IncomingDocumentsHelper AcceptDocument()
+        {
+            var btnAccept = By.XPath("//button[.='Подписать']");
+            WaitForElementIsVisible(btnAccept, 15);
+            GetElement(By.XPath("//button[.='Подписать']")).Click();
 
-                var btnAccept = By.XPath("//button[.='Подписать']");
-                WaitForElementIsVisible(btnAccept,15);
-                GetElement(By.XPath("//button[.='Подписать']")).Click();
-
-                var loading = By.CssSelector("loading-overlay--div");
-                WaitForElementIsVisible(loading, 15);
-
+            var loading = By.CssSelector("loading-overlay--div");
+            WaitForElementIsVisible(loading, 15);
 
             return this;
-            }
+        }
 
-            /// <summary>
-            /// Подписание документа в карточке
-            /// </summary>
-            public IncomingDocumentsHelper AcceptDocument()
-            {
-                var btnAccept = By.XPath("//button[.='Подписать']");
-                WaitForElementIsVisible(btnAccept, 15);
-                GetElement(By.XPath("//button[.='Подписать']")).Click();
+        /// <summary>
+        /// Отклонение документа в карточке
+        /// </summary>
+        public IncomingDocumentsHelper RejectDocument()
+        {
+            var btnAccept = By.XPath("//button[.='Отказать']");
+            WaitForElementIsVisible(btnAccept, 15);
+            GetElement(By.XPath("//button[.='Отказать']")).Click();
 
-                var loading = By.CssSelector("loading-overlay--div");
-                WaitForElementIsVisible(loading, 15);
+            var loading = By.CssSelector("loading-overlay--div");
+            WaitForElementIsVisible(loading, 15);
 
-                return this;
-            }
-
-            /// <summary>
-            /// Отклонение документа в карточке
-            /// </summary>
-            public IncomingDocumentsHelper RejectDocument()
-            {
-                var btnAccept = By.XPath("//button[.='Отказать']");
-                WaitForElementIsVisible(btnAccept, 15);
-                GetElement(By.XPath("//button[.='Отказать']")).Click();
-
-                var loading = By.CssSelector("loading-overlay--div");
-                WaitForElementIsVisible(loading, 15);
-
-                return this;
-            }
+            return this;
+        }
 
 
 

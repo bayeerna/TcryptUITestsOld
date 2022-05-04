@@ -30,6 +30,6 @@ namespace Taxnet.Tcrypt.Autotests
             app.MDOCreate.SelectTypeOfDocument()
                 .SendDocumentOfMDO();
         }
-        private string specOfKomitet = "Ефимов Тихон Павлович";
+        private string specOfKomitet = "Костров Евгений";
     }
 }

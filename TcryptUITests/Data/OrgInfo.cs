@@ -73,6 +73,16 @@
 
             organizations.Add(new OrgInfo()
             {
+                FullName = "Тестовый КЗИО",
+
+                Password = "12345678",
+                Hash = "18AFE15DB4C1339F1D1742AA3DD3C7F03B4ED4E8",
+                NameOfUser = "Костров Евгений",
+                Pin = "123",
+            });
+
+            organizations.Add(new OrgInfo()
+            {
                 FullName = "ЗАО «Точка Зрения»",
 
                 Password = "12345678",
@@ -80,7 +90,6 @@
                 NameOfUser = "Ефимов Тихон Павлович",
                 Pin = "123",
             });
-
 
             return organizations;
 
