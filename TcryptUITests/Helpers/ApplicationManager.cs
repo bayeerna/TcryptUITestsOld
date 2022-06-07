@@ -16,27 +16,29 @@ namespace Taxnet.Tcrypt.Autotests
 {
     public class ApplicationManager
     {
-        protected IWebDriver _driver;
-        protected LoginHelper _loginHelper;
-        protected CreateDocumentHelper _createDocumentHelper;
-        protected AuthoritiesHelper _authoritiesHelper;
-        protected PrintFormsHelper _printFormHelper;
-        protected IncomingDocumentsHelper _incomingDocuments;
-        protected MDOCreateHelper _mdoCreate;
+        protected IWebDriver driver;
+        protected LoginHelper loginHelper;
+        protected CreateDocumentHelper createDocumentHelper;
+        protected AuthoritiesHelper authoritiesHelper;
+        protected PrintFormsHelper printFormHelper;
+        protected IncomingDocumentsHelper incomingDocuments;
+        protected MDOCreateHelper mdoCreate;
+        protected SearchHelper searchHelper;
         //protected MessageProcessingHelper messageProcessingHelper;
 
         public ApplicationManager()
 
         {
-            _driver = new FirefoxDriver();
-            _driver.Manage().Window.Maximize();
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
-            _loginHelper = new LoginHelper(this);
-            _createDocumentHelper = new CreateDocumentHelper(this);
-            _authoritiesHelper = new AuthoritiesHelper(this);
-            _printFormHelper = new PrintFormsHelper(this);
-            _incomingDocuments = new IncomingDocumentsHelper(this);
-            _mdoCreate = new MDOCreateHelper(this);
+            driver = new FirefoxDriver();
+            driver.Manage().Window.Maximize();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
+            loginHelper = new LoginHelper(this);
+            createDocumentHelper = new CreateDocumentHelper(this);
+            authoritiesHelper = new AuthoritiesHelper(this);
+            printFormHelper = new PrintFormsHelper(this);
+            incomingDocuments = new IncomingDocumentsHelper(this);
+            mdoCreate = new MDOCreateHelper(this);
+            searchHelper = new SearchHelper(this);
             //messageProcessingHelper = new MessageProcessingHelper(this);
         }
 
@@ -44,7 +46,7 @@ namespace Taxnet.Tcrypt.Autotests
         {
             get
             {
-                return _driver;
+                return driver;
             }
         }
 
@@ -53,7 +55,7 @@ namespace Taxnet.Tcrypt.Autotests
         {
             try
             {
-                _driver.Quit();
+                driver.Quit();
             }
             catch
             {
@@ -64,14 +66,14 @@ namespace Taxnet.Tcrypt.Autotests
         {
             get
             {
-                return _loginHelper;
+                return loginHelper;
             }
         }
         public CreateDocumentHelper CreateDocuments
         {
             get
             {
-                return _createDocumentHelper;
+                return createDocumentHelper;
             }
         }
         
@@ -79,14 +81,14 @@ namespace Taxnet.Tcrypt.Autotests
         {
             get
             {
-                return _authoritiesHelper;
+                return authoritiesHelper;
             }
         }
 
         public PrintFormsHelper PrintForms
         {
             get
-            { return _printFormHelper;
+            { return printFormHelper;
             }
         }
 
@@ -94,7 +96,7 @@ namespace Taxnet.Tcrypt.Autotests
         {
             get
             {
-                return _incomingDocuments;
+                return incomingDocuments;
             }
         }
 
@@ -102,7 +104,15 @@ namespace Taxnet.Tcrypt.Autotests
         {
             get
             {
-                return _mdoCreate;
+                return mdoCreate;
+            }
+        }
+
+        public SearchHelper SearchHelper
+        {
+            get
+            {
+                return searchHelper;
             }
         }
     }

@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="LoginPage" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://pre.tcrypt.ru/</Value>
+      <Value Profile="(Default)">https://pre.tcrypt.ru/Account</Value>
     </Setting>
     <Setting Name="Login" Type="System.String" Scope="User">
       <Value Profile="(Default)">uprobr_znaniya@mail.ru</Value>

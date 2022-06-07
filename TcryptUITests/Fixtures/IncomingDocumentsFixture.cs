@@ -12,27 +12,99 @@ namespace Taxnet.Tcrypt.Autotests
     public class IncomingDocumentsFixture:TestBase
     {
         [Test]
-        public void AcceptIncomingDocument()
+        public void AcceptIncomingUnformalizedDocument()
         {
             app.Auth.OpenLoginPage()
-                .LoginByCert("Саянова Кристина")
+                .LoginByCert("Костров Евгений")
                 .CloseTrainingPage();
+
+            app.SearchHelper.FillSearchParameters("Неизвестный", "На подписи/Требуется подпись", "Входящие");
+
             app.IncomingDocuments
-                .FiltrOfIncomingDocuments(2)
                 .GoToCardOfDocument()
-                .AcceptDocument();
+                .CheckingStateOfDocument("Требуется подпись")
+                .AcceptDocument()
+                .CheckingStateOfDocument("Завершен");
         }
 
         [Test]
-        public void RejectIncomingDocument()
+        public void RejectIncomingUnformalizedDocument()
         {
             app.Auth.OpenLoginPage()
-                .LoginByCert("Саянова Кристина")
+                .LoginByCert("Костров Евгений")
                 .CloseTrainingPage();
+            app.SearchHelper.FillSearchParameters("Неизвестный", "На подписи/Требуется подпись", "Входящие");
             app.IncomingDocuments
-                .FiltrOfIncomingDocuments(2)
                 .GoToCardOfDocument()
-                .RejectDocument();
+                .CheckingStateOfDocument("Требуется подпись")
+                .RejectDocument()
+                .CheckingStateOfDocument("Отказано");
         }
+
+        [Test]
+        public void AcceptIncomingUKD()
+        {
+            app.Auth.OpenLoginPage()
+                .LoginByCert("Костров Евгений")
+                .CloseTrainingPage();
+
+            app.SearchHelper.FillSearchParameters("УКД", "На подписи/Требуется подпись", "Входящие");
+
+            app.IncomingDocuments
+                .GoToCardOfDocument()
+                .CheckingStateOfDocument("Требуется подпись")
+                .AcceptDocument()
+                .CheckingStateOfDocument("Завершен");
+        }
+
+        [Test]
+        public void AcceptIncomingUPD820()
+        {
+            app.Auth.OpenLoginPage()
+                .LoginByCert("Костров Евгений")
+                .CloseTrainingPage();
+
+            app.SearchHelper.FillSearchParameters("УПД820", "На подписи/Требуется подпись", "Входящие");
+
+            app.IncomingDocuments
+                .GoToCardOfDocument()
+                .CheckingStateOfDocument("Требуется подпись")
+                .AcceptDocument()
+                .CheckingStateOfDocument("Завершен");
+        }
+
+        [Test]
+        public void RejectIncomingUKD()
+        {
+            app.Auth.OpenLoginPage()
+                .LoginByCert("Костров Евгений")
+                .CloseTrainingPage();
+
+            app.SearchHelper.FillSearchParameters("УКД", "На подписи/Требуется подпись", "Входящие");
+
+            app.IncomingDocuments
+                .GoToCardOfDocument()
+                .CheckingStateOfDocument("Требуется подпись")
+                .RejectDocument()
+                .CheckingStateOfDocument("Отказано");
+        }
+
+        [Test]
+        public void RejectIncomingUPD820()
+        {
+            app.Auth.OpenLoginPage()
+                .LoginByCert("Костров Евгений")
+                .CloseTrainingPage();
+
+            app.SearchHelper.FillSearchParameters("УПД820", "На подписи/Требуется подпись", "Входящие");
+
+            app.IncomingDocuments
+                .GoToCardOfDocument()
+                .CheckingStateOfDocument("Требуется подпись")
+                .RejectDocument()
+                .CheckingStateOfDocument("Отказано");
+        }
+
+
     }
 }

@@ -91,6 +91,16 @@
                 Pin = "123",
             });
 
+            organizations.Add(new OrgInfo()
+            {
+                FullName = "Петрунин Арсений Платонович",
+
+                Password = "12345678",
+                Hash = "9266FDE97ED9EF1FE358C4CE82FD2C50FB975364",
+                NameOfUser = "Петрунин Арсений Платонович",
+                Pin = "123",
+            });
+
             return organizations;
 
         }

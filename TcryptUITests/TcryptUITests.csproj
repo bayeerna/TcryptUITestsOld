@@ -71,7 +71,9 @@
     <Compile Include="Fixtures\IncomingDocumentsFixture.cs" />
     <Compile Include="Fixtures\MessageProcessingFixture.cs" />
     <Compile Include="Fixtures\MDOFixture.cs" />
+    <Compile Include="Fixtures\PrintFormsFixture.cs" />
     <Compile Include="Helpers\ApplicationManager.cs" />
+    <Compile Include="Helpers\SearchHelper.cs" />
     <Compile Include="Helpers\CreateDocumentHelper.cs" />
     <Compile Include="Bases\HelperBase.cs" />
     <Compile Include="Helpers\AuthoritiesHelper.cs" />
@@ -143,8 +145,8 @@
     <Error Condition="!Exists('..\packages\Selenium.Chrome.WebDriver.85.0.0\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Chrome.WebDriver.85.0.0\build\Selenium.Chrome.WebDriver.targets'))" />
     <Error Condition="!Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.12.0\build\NUnit.props'))" />
     <Error Condition="!Exists('..\packages\Selenium.Firefox.WebDriver.0.27.0\build\Selenium.Firefox.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Firefox.WebDriver.0.27.0\build\Selenium.Firefox.WebDriver.targets'))" />
-    <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.86.0.4240.2200\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.86.0.4240.2200\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+    <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.102.0.5005.6102\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.102.0.5005.6102\build\Selenium.WebDriver.ChromeDriver.targets'))" />
   </Target>
   <Import Project="..\packages\Selenium.Firefox.WebDriver.0.27.0\build\Selenium.Firefox.WebDriver.targets" Condition="Exists('..\packages\Selenium.Firefox.WebDriver.0.27.0\build\Selenium.Firefox.WebDriver.targets')" />
-  <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.86.0.4240.2200\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.86.0.4240.2200\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.102.0.5005.6102\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.102.0.5005.6102\build\Selenium.WebDriver.ChromeDriver.targets')" />
 </Project>

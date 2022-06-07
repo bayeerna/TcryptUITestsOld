@@ -50,7 +50,7 @@ namespace Taxnet.Tcrypt.Autotests
             var certTab = By.Id("byCert");
             var cert = By.XPath("//*[contains(text(),'" +  Organizations.Find((org) => org.NameOfUser == nameOfUser).NameOfUser + "')]");
             WaitForElementIsVisible(certTab, 5);
-            driver.FindElement(certTab).Click();
+            GetElement(certTab).Click();
             WaitForElementIsVisible(cert, 5);
             driver.FindElement(cert).Click();
             return this;
@@ -72,14 +72,18 @@ namespace Taxnet.Tcrypt.Autotests
         public LoginHelper CloseTrainingPage()
         {
             var closeTrainingButton = By.XPath("//button[.='Пропустить']");
-            WaitForElementIsVisible(closeTrainingButton, 100);
-            WaitForElementToBeClickable(closeTrainingButton, 100);
+            WaitForElementIsVisible(closeTrainingButton, 15);
+            WaitForElementToBeClickable(closeTrainingButton, 15);
 
             driver.FindElement(closeTrainingButton).Click();
 
             var nameOfOrganization = By.XPath("//*[@id=\"root\"]/header[2]/nav/a[3]/div[1]/div");
             //var nameOfOrganization = By.CssSelector(".organization-name");
-            WaitForElementIsVisible(nameOfOrganization, 40);
+            WaitForElementIsVisible(nameOfOrganization, 15);
+
+            var loading = By.CssSelector("loading-overlay--div");
+            WaitUntilElementIsNotVisible(loading, 15);
+
             return this;
         }
     }

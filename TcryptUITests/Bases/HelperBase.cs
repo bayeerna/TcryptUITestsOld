@@ -88,7 +88,7 @@ namespace Taxnet.Tcrypt.Autotests
             // iClassName: By.Id("id"), By.CssSelector("selector") и т.д.
         }
 
-        /// <summary>
+        /// <summary>    
         /// скроллит до нужного элемента на странице
         /// </summary>
         /// <param name="selector"></param>

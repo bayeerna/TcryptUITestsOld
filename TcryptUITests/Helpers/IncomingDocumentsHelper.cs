@@ -20,23 +20,19 @@ namespace Taxnet.Tcrypt.Autotests
             : base(manager) {}
 
         /// <summary>
-        /// Переход к карточке документа
+        /// Открыть первый документ в списке
         /// </summary>
         public IncomingDocumentsHelper GoToCardOfDocument()
         {
-            //driver.FindElements(By.XPath("//*[@id=intro-inbox-aside-link"))[1].Click();
             var currentSelector = By.XPath("//*[contains(text(), 'Загрузка документов')]");
             WaitUntilElementIsNotVisible(currentSelector, 40);
-            GetElement(By.XPath("//*[contains(text(),'.doc')]")).Click();
+            //GetElement(By.XPath("//*[contains(text(),'.doc')]")).Click();
+            List<IWebElement> listOfDocuments = GetElements(By.ClassName("c-doc"));
+            listOfDocuments[0].Click();
 
-            var btnAccept = By.XPath("//button[.='Подписать']");
-            WaitForElementIsVisible(btnAccept,15);
-            GetElement(By.XPath("//button[.='Подписать']")).Click();
-
-            var loading = By.CssSelector("loading-overlay--div");
-            WaitForElementIsVisible(loading, 15);
             return this;
         }
+
 
         /// <summary>
         /// Подписание документа в карточке
@@ -45,10 +41,33 @@ namespace Taxnet.Tcrypt.Autotests
         {
             var btnAccept = By.XPath("//button[.='Подписать']");
             WaitForElementIsVisible(btnAccept, 15);
-            GetElement(By.XPath("//button[.='Подписать']")).Click();
+            GetElement(btnAccept).Click();
 
             var loading = By.CssSelector("loading-overlay--div");
-            WaitForElementIsVisible(loading, 15);
+            WaitUntilElementIsNotVisible(loading,15);
+
+            var modalAcc = By.ClassName("tc-modal-header");
+
+            try
+            {
+                if (driver.FindElement(By.ClassName("tc-modal-header")).Enabled)
+                {
+                    driver.SwitchTo().ActiveElement();
+                    var btnConfirmation = By.XPath("//button[.='Принять']");
+                    WaitForElementIsVisible(btnConfirmation, 15);
+                    GetElement(btnConfirmation).Click();
+                    //TODO добавить заполнение полномочий при возникновении ошибки "Неправильно заполнен блок полномочий"
+
+                    WaitUntilElementIsNotVisible(modalAcc, 10);
+
+                    return this;
+                }
+            }
+            catch
+            {
+
+            }
+
 
             return this;
         }
@@ -58,42 +77,109 @@ namespace Taxnet.Tcrypt.Autotests
         /// </summary>
         public IncomingDocumentsHelper RejectDocument()
         {
-            var btnAccept = By.XPath("//button[.='Отказать']");
-            WaitForElementIsVisible(btnAccept, 15);
-            GetElement(By.XPath("//button[.='Отказать']")).Click();
+            var btnReject = By.XPath("//button[.='Отказать']");
+            WaitForElementIsVisible(btnReject, 15);
+            GetElement(btnReject).Click();
 
             var loading = By.CssSelector("loading-overlay--div");
-            WaitForElementIsVisible(loading, 15);
+            WaitUntilElementIsNotVisible(loading, 15);
+
+            var modalRej = By.ClassName("tc-modal-header");
+            WaitForElementIsVisible(modalRej,15);
+
+            driver.SwitchTo().ActiveElement();
+            driver.FindElements(By.XPath("//button[.='Отказать']"))[1].Click();
+            WaitUntilElementIsNotVisible(modalRej, 10);
+
+            return this;
+        }
+
+        //TODO вынести методы по фильтрам в отдельный класс
+        /// <summary>
+        /// Установка фильтра в списке входящих
+        /// </summary>
+        public IncomingDocumentsHelper FiltrOfIncomingDocuments(int state)
+        {
+
+            //TODO добавить ожидание исчезновения лоадинга
+            var filter = By.Name("filter");
+            GetElement(filter).Click();
+
+            //получаем список фильтров
+            List<IWebElement> listOfSelects = GetElements(By.CssSelector(".Select-arrow"));
+            WaitUntilElementIsNotVisible(By.CssSelector("loading-overlay--div"), 10);
+            listOfSelects[0].Click();
+
+            //получаем список статусов
+            List<IWebElement> listOfStates = GetElements(By.CssSelector(".Select-option"));
+            listOfStates[state].Click();
 
             return this;
         }
 
 
-
         /// <summary>
-        /// Установка фильтра
+        /// Нажатие кнопки "Найти" в фильтре
         /// </summary>
-        public IncomingDocumentsHelper FiltrOfIncomingDocuments(int state)
+        public IncomingDocumentsHelper ClickFoundInFilter()
         {
-            var filter = By.Name("filter");
-            GetElement(filter).Click();
-            Actions actions = new Actions(driver);
-
-            List<IWebElement> listOfSelects = GetElements(By.CssSelector(".Select-arrow"));
-            WaitUntilElementIsNotVisible(By.CssSelector("loading-overlay--div"), 10);
-            listOfSelects[0].Click();
-
-            List<IWebElement> listOfStates = GetElements(By.CssSelector(".Select-option"));
-            listOfStates[state].Click();
-
             GetElement(By.XPath("//button[.='Найти']")).Click();
 
             return this;
         }
 
 
-    }
+        /// <summary>
+        /// Проверка статуса после подписания входящего документа
+        /// </summary>
+        public IncomingDocumentsHelper CheckingStateOfDocument(string state)
+        {
+            var loading = By.CssSelector("loading-overlay--div");
+            WaitUntilElementIsNotVisible(loading, 20);
 
+            WaitForElementIsVisible(By.XPath("//div[@class='c-flex']/p"), 20);
+            var actualState = GetElement(By.XPath("//div[@class='c-flex']/p")).Text;
+            switch (state)
+            {
+                case "Отказано":
+                    Assert.AreEqual("Отказано (Посмотреть комментарий)", actualState);
+                    break;
+
+                case "Выставлен":
+                    Assert.AreEqual("Выставлен ", actualState);
+                    break;
+
+                case "Отправлен":
+                    Assert.True(actualState.Equals("Отправлен ") | actualState.Equals("Завершен "));
+                    break;
+
+                case "Завершен":
+                    Assert.True(actualState.Equals("Отправлен ") | actualState.Equals("Завершен "));
+                    break;
+
+                case "На подписи":
+                    Assert.AreEqual("На подписи ", actualState);
+                    break;
+
+                case "Требуется подпись":
+                    Assert.AreEqual("Требуется подпись ", actualState);
+                    break;
+
+                case "Ожидается аннулирование":
+                    Assert.AreEqual("Ожидается аннулирование ", actualState);
+                    break;
+
+                case "Требуется аннулирование":
+                    Assert.AreEqual("Требуется аннулирование ", actualState);
+                    break;
+
+                case "Аннулирован":
+                    Assert.AreEqual("Аннулирован ", actualState);
+                    break;
+            }
+            return this;
+        }
+    }
 }
     
 

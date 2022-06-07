@@ -87,7 +87,7 @@ namespace Taxnet.Tcrypt.Autotests
         public CreateDocumentHelper SelectRecipient(string INN, string department, string nameOfOrganisation)
         {
             //Поиск поля "Получатель"
-            var recipientField = By.XPath("//*[@id=\"root\"]/main/section/div/section/section/form/div[2]/div[1]/div/div/input");
+            var recipientField = By.XPath("//*[@id=\"root\"]/main/section/div/section/section/form/div[2]/div[1]/div/div/input"); //TODO изменить селектор
             WaitForElementIsVisible(recipientField, 10);
             GetElement(recipientField).Click();
            
@@ -95,7 +95,7 @@ namespace Taxnet.Tcrypt.Autotests
             GetElement(recipientField).SendKeys(INN);
 
             //Выбор из списка
-            Thread.Sleep(10000);
+            Thread.Sleep(10000); //TODO убрать паузу
             var recipient = By.XPath("//*[contains(text(),'" + nameOfOrganisation + "')]");
             WaitForElementIsVisible(recipient, 10);
             GetElement(recipient).Click();
@@ -153,7 +153,7 @@ namespace Taxnet.Tcrypt.Autotests
         /// </summary>
         /// <param name="documentName"></param>
         /// <returns></returns>
-        public CreateDocumentHelper CheckFileUploaded(string documentName)
+        public CreateDocumentHelper CheckFileUploaded(string documentName) //TODO добавить в тесты
         {
             var uploadedFile = By.CssSelector(".uploaded-doc__info__name");
             //WaitForElementIsVisible(documentName, 7);
