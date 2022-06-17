@@ -27,8 +27,7 @@ namespace Taxnet.Tcrypt.Autotests
         public MDOCreateHelper SelectRecipient(string INN, string nameOfOrganisation)
         {
             //Поиск поля "Получатель"
-            //var recipientField = By.XPath("//input[@type='text']");
-            var recipientField = By.XPath("//*[@id=\"root\"]/main/section/div/section/section/form/div/div[1]/div[1]/div/div/input");
+            var recipientField = By.XPath("//input[@name='учреждениему/муп']");                                                                                                                         /// 
             WaitForElementIsVisible(recipientField, 10);
             GetElement(recipientField).Click();
 
@@ -41,6 +40,7 @@ namespace Taxnet.Tcrypt.Autotests
             WaitForElementIsVisible(recipient, 10);
             GetElement(recipient).Click();
 
+            //Для случаев, когда выпадающий список не закрылся - кликаем в любое место на странице для его закрытия
             IWebElement listOfRecipient = GetElement(By.Id("react-autowhatever-organization-name"));
             if (listOfRecipient.Displayed)
             {
@@ -50,6 +50,9 @@ namespace Taxnet.Tcrypt.Autotests
             return this;
         }
 
+        /// <summary>
+        /// Заполнить тему
+        /// </summary>
         public MDOCreateHelper EnterTopic()
         {
             var inputTopic = By.XPath("//*[@id='title']");
@@ -57,17 +60,24 @@ namespace Taxnet.Tcrypt.Autotests
             return this;
         }
 
+        /// <summary>
+        /// Выбрать тип документа
+        /// </summary>
         public MDOCreateHelper SelectTypeOfDocument()
         {
-            driver.FindElements(By.XPath("//*[@class='Select-value-label']"))[1].Click();
-            //GetElement(By.XPath("//*[@class='Select-value-label']")).Click();
+            GetElement(By.XPath("//div[@id='react-select-4--value']/div[@class='Select-value']")).Click();
             GetElement(By.XPath("//*[contains(text(), 'Акт о приеме-передаче')]")).Click();
             return this;
         }
 
+        /// <summary>
+        /// Нажать кнопку "Отправить"
+        /// </summary>
         public MDOCreateHelper SendDocumentOfMDO()
         {
-            GetElement(By.XPath("//*[@id=\"root\"]/main/section/div/section/section/form/div/div[5]/button")).Click();
+            var btnSend = By.XPath("//button[@type='submit']");                                                                                                                         /// 
+            WaitForElementToBeClickable(btnSend, 10);
+            GetElement(btnSend).Click();
             return this;
         }
 

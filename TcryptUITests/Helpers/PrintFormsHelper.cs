@@ -54,7 +54,7 @@ using System.Threading;
         /// <returns></returns>
         public PrintFormsHelper OpenPrintedWithES()
         {
-            var currentSelector = By.XPath("//*[@id=\"selected-document-placeholder\"]/div[1]/div/div[3]/div/div/a");
+            var currentSelector = By.XPath("//*[contains(text(), 'Печать с ЭП')]");
             WaitForElementIsVisible(currentSelector, TimeLimit);
             GetElement(currentSelector).Click();
             return this;

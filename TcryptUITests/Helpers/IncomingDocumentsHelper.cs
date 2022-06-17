@@ -26,7 +26,6 @@ namespace Taxnet.Tcrypt.Autotests
         {
             var currentSelector = By.XPath("//*[contains(text(), 'Загрузка документов')]");
             WaitUntilElementIsNotVisible(currentSelector, 40);
-            //GetElement(By.XPath("//*[contains(text(),'.doc')]")).Click();
             List<IWebElement> listOfDocuments = GetElements(By.ClassName("c-doc"));
             listOfDocuments[0].Click();
 
@@ -128,9 +127,57 @@ namespace Taxnet.Tcrypt.Autotests
             return this;
         }
 
+        /// <summary>
+        /// Формирование предложения об аннулировании документа в карточке
+        /// </summary>
+        public IncomingDocumentsHelper CancellationDocument()
+        {
+            var btnCancellation = By.Id("cancel-btn");
+            WaitForElementIsVisible(btnCancellation, 15);
+            GetElement(btnCancellation).Click();
+
+            var loading = By.CssSelector("loading-overlay--div");
+            WaitUntilElementIsNotVisible(loading, 15);
+
+            var modalCancellation = By.ClassName("tc-modal-header");
+            WaitForElementIsVisible(modalCancellation, 15);
+            driver.SwitchTo().ActiveElement();
+
+            var commentCancellation = By.XPath("//textarea[@name='CancelReason']");
+            GetElement(commentCancellation).SendKeys("Автотест");
+
+            driver.FindElements(By.XPath("//button[.='Аннулировать']"))[1].Click();
+            WaitUntilElementIsNotVisible(modalCancellation, 10);
+
+            return this;
+        }
 
         /// <summary>
-        /// Проверка статуса после подписания входящего документа
+        /// Формирование подтверждения аннулирования документа в карточке
+        /// </summary>
+        public IncomingDocumentsHelper ConfirmationCancellation()
+        {
+            var btnCancellation = By.Id("cancel-btn");
+            WaitForElementIsVisible(btnCancellation, 15);
+            GetElement(btnCancellation).Click();
+
+            var loading = By.CssSelector("loading-overlay--div");
+            WaitUntilElementIsNotVisible(loading, 15);
+
+            var modalCancellation = By.ClassName("tc-modal-header");
+            WaitForElementIsVisible(modalCancellation, 15);
+            driver.SwitchTo().ActiveElement();
+
+            var btnConfirmCancel = By.XPath("//button[text()='Подтвердить аннулирование']");
+            GetElement(btnConfirmCancel).Click();
+
+            WaitUntilElementIsNotVisible(modalCancellation, 10);
+
+            return this;
+        }
+
+        /// <summary>
+        /// Проверка статуса после действий над входящим документом
         /// </summary>
         public IncomingDocumentsHelper CheckingStateOfDocument(string state)
         {

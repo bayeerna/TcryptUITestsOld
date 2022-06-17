@@ -116,7 +116,6 @@ namespace Taxnet.Tcrypt.Autotests
             Actions actions = new Actions(driver);
             //Клик на селект "Статус"
             List<IWebElement> listOfSelects = GetElements(By.CssSelector(".Select-arrow"));
-            //WaitUntilElementIsNotVisible(By.CssSelector("loading-overlay--div"), 10);
             listOfSelects[1].Click();
             switch (status)
             {

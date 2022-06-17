@@ -22,8 +22,10 @@ namespace Taxnet.Tcrypt.Autotests
         protected AuthoritiesHelper authoritiesHelper;
         protected PrintFormsHelper printFormHelper;
         protected IncomingDocumentsHelper incomingDocuments;
+        protected OutcomingDocumentsHelper outcomingDocuments;
         protected MDOCreateHelper mdoCreate;
         protected SearchHelper searchHelper;
+        protected FilterHelper filterHelper;
         //protected MessageProcessingHelper messageProcessingHelper;
 
         public ApplicationManager()
@@ -37,8 +39,10 @@ namespace Taxnet.Tcrypt.Autotests
             authoritiesHelper = new AuthoritiesHelper(this);
             printFormHelper = new PrintFormsHelper(this);
             incomingDocuments = new IncomingDocumentsHelper(this);
+            outcomingDocuments = new OutcomingDocumentsHelper(this);
             mdoCreate = new MDOCreateHelper(this);
             searchHelper = new SearchHelper(this);
+            filterHelper = new FilterHelper(this);
             //messageProcessingHelper = new MessageProcessingHelper(this);
         }
 
@@ -100,6 +104,14 @@ namespace Taxnet.Tcrypt.Autotests
             }
         }
 
+        public OutcomingDocumentsHelper OutcomingDocuments
+        {
+            get
+            {
+                return outcomingDocuments;
+            }
+        }
+
         public MDOCreateHelper MDOCreate
         {
             get
@@ -113,6 +125,14 @@ namespace Taxnet.Tcrypt.Autotests
             get
             {
                 return searchHelper;
+            }
+        }
+
+        public FilterHelper Filter
+        {
+            get
+            {
+                return filterHelper;
             }
         }
     }

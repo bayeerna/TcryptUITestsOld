@@ -12,7 +12,9 @@ namespace Taxnet.Tcrypt.Autotests
     [TestFixture]
     public class EDOFixtures : TestBase
     {
-
+        /// <summary>
+        /// Отправка документов по маршруту "Договор оперативного управления"
+        /// </summary>
         [Test]
         public void SendMDO()
         {

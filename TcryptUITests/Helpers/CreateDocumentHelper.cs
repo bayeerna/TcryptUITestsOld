@@ -44,7 +44,12 @@ namespace Taxnet.Tcrypt.Autotests
         {
             driver.FindElement(By.XPath("//input[@type='file']"))
             .SendKeys(Path.Combine(filesFolder + filepath));
-            Thread.Sleep(4000);
+
+            //ждем появление блока с информацией о документе
+            //var docInfo = By.XPath("//div[@class='uploaded-doc__info']");uploaded-doc__row
+            var docInfo = By.XPath("//div[@class='uploaded-doc__row']");
+            WaitForElementIsVisible(docInfo,20);
+
             return this;
         }
 
@@ -87,7 +92,7 @@ namespace Taxnet.Tcrypt.Autotests
         public CreateDocumentHelper SelectRecipient(string INN, string department, string nameOfOrganisation)
         {
             //Поиск поля "Получатель"
-            var recipientField = By.XPath("//*[@id=\"root\"]/main/section/div/section/section/form/div[2]/div[1]/div/div/input"); //TODO изменить селектор
+            var recipientField = By.XPath("//div[@role='combobox']/input[@type='text']");
             WaitForElementIsVisible(recipientField, 10);
             GetElement(recipientField).Click();
            
@@ -163,7 +168,7 @@ namespace Taxnet.Tcrypt.Autotests
 
         public CreateDocumentHelper GoToEdoPage()
         {
-            var edoTab = By.XPath("/html/body/div[1]/main/section/div/section/div/a[2]");
+            var edoTab = By.XPath("//div[@class='docs-section__tabs']/a[@class='docs-section__tab ']");
             WaitForElementIsVisible(edoTab,10);
             GetElement(edoTab).Click();
             return this;

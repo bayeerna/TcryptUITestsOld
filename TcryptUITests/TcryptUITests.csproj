@@ -73,6 +73,8 @@
     <Compile Include="Fixtures\MDOFixture.cs" />
     <Compile Include="Fixtures\PrintFormsFixture.cs" />
     <Compile Include="Helpers\ApplicationManager.cs" />
+    <Compile Include="Helpers\FilterHelper.cs" />
+    <Compile Include="Helpers\OutcomingDocumentsHelper.cs" />
     <Compile Include="Helpers\SearchHelper.cs" />
     <Compile Include="Helpers\CreateDocumentHelper.cs" />
     <Compile Include="Bases\HelperBase.cs" />
@@ -82,7 +84,7 @@
     <Compile Include="Helpers\LoginHelper.cs" />
     <Compile Include="Helpers\MessageProcessingHelper.cs" />
     <Compile Include="Helpers\PrintFormsHelper.cs" />
-    <Compile Include="Helpers\TestBase.cs" />
+    <Compile Include="Bases\TestBase.cs" />
     <Compile Include="Properties.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>

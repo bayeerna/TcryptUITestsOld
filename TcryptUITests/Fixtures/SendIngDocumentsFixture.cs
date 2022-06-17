@@ -16,11 +16,12 @@ using TcryptUITests;
 namespace Taxnet.Tcrypt.Autotests
 {
     [TestFixture]
-    public class SendDocumentsTests : TestBase
+    public class SendIngDocumentsFixture : TestBase
     {
         string nameOfOrganisation = "КЗИО";
         string INN = Properties.Default.Inn_KZIO;
         string nameOfDepartment = "Головное подразделение";
+
         /// <summary>
         /// Создание черновика по логину
         /// </summary>
@@ -147,6 +148,9 @@ namespace Taxnet.Tcrypt.Autotests
             app.CreateDocuments.ClickSendDocumentButton();
         }
 
+        /// <summary>
+        /// Отправка неформализованного xml
+        /// </summary>
         [Test]
         public void SendingUnformalizedXmlFile()
         {
@@ -163,7 +167,5 @@ namespace Taxnet.Tcrypt.Autotests
                 .CheckFileUploaded(FilesData.UnformalizedXmlFile)
                 .ClickSendDocumentButton();
         }
-
-
     }
 }

@@ -41,10 +41,9 @@ namespace Taxnet.Tcrypt.Autotests
             SelectStateOfDocument(state);
             SelectFolder(folder);
 
-            var btnFound = GetElement(By.XPath("//*[contains(text(), 'Найти')]"));
-            actions.MoveToElement(btnFound);
-            actions.Perform();
-            btnFound.Click();
+            var btnFound =By.XPath("//*[contains(text(), 'Найти')]");
+            WaitForElementToBeClickable(btnFound,15);
+            GetElement(btnFound).Click();
 
             return this;
         }
