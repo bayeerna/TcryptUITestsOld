@@ -64,10 +64,7 @@ namespace Taxnet.Tcrypt.Autotests
             }
             catch
             {
-
             }
-
-
             return this;
         }
 

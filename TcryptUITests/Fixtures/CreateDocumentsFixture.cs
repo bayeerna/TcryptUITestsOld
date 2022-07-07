@@ -16,10 +16,12 @@ using TcryptUITests;
 namespace Taxnet.Tcrypt.Autotests
 {
     [TestFixture]
-    public class SendIngDocumentsFixture : TestBase
+    public class CreateDocumentsFixture : TestBase
     {
         string nameOfOrganisation = "КЗИО";
-        string INN = Properties.Default.Inn_KZIO;
+        private string nameOfOrganizationByteTest = Properties.Default.NameOfByte;
+        string INNofKZIO = Properties.Default.Inn_KZIO;
+        private string INNofByteTest = Properties.Default.Inn_ByteTest;
         string nameOfDepartment = "Головное подразделение";
 
         /// <summary>
@@ -34,7 +36,7 @@ namespace Taxnet.Tcrypt.Autotests
             app.CreateDocuments
                                .ClickCreateDocumentButton()
                                .ClickClearButton()
-                               .SelectRecipient(INN, nameOfDepartment, nameOfOrganisation)
+                               .SelectRecipient(INNofKZIO, nameOfDepartment, nameOfOrganisation)
                                .UploadDocument(FilesData.UnformalizedFiles + FilesData.UnformalizedTxtFile)
                                .SaveDraft();
             app.Auth.Logout();
@@ -47,12 +49,13 @@ namespace Taxnet.Tcrypt.Autotests
         public void SendDocumentTxt()
         {
             app.Auth.OpenLoginPage()
-                    .LoginByCert("Саянова Кристина")
+                    .LoginByCert("Ахметов Викентий Филиппович")
                     .CloseTrainingPage();
             app.CreateDocuments//.StopMessageProcessing()
                                .ClickCreateDocumentButton()
                                .ClickClearButton()
-                               .SelectRecipient(INN, nameOfDepartment, nameOfOrganisation)
+                               //.SelectRecipient(INNofKZIO, nameOfDepartment, nameOfOrganisation)
+                               .SelectRecipient(INNofByteTest, nameOfDepartment, nameOfOrganizationByteTest)
                                .UploadDocument(FilesData.UnformalizedFiles + FilesData.UnformalizedTxtFile)
                                .ClickSendDocumentButton();
         }
@@ -64,14 +67,16 @@ namespace Taxnet.Tcrypt.Autotests
         public void SendDocumentPdf()
         {
             app.Auth.OpenLoginPage()
-                    .LoginByCert("Саянова Кристина")
+                    .LoginByCert("Ахметов Викентий Филиппович")
                     .CloseTrainingPage();
             app.CreateDocuments//.StopMessageProcessing()
                                .ClickCreateDocumentButton()
                                .ClickClearButton()
-                               .SelectRecipient(INN, nameOfDepartment, nameOfOrganisation)
+                               //.SelectRecipient(INNofKZIO, nameOfDepartment, nameOfOrganisation)
+                               .SelectRecipient(INNofByteTest, nameOfDepartment, nameOfOrganizationByteTest)
                                .UploadDocument(FilesData.UnformalizedFiles + FilesData.UnformalizedActFile)
-                               .ClickSendDocumentButton(); 
+                               .CheckFileUploaded(FilesData.UnformalizedActFile);
+            app.CreateDocuments.ClickSendDocumentButton();
         }
 
         /// <summary>
@@ -81,12 +86,13 @@ namespace Taxnet.Tcrypt.Autotests
         public void SendDocumentSF()
         {
             app.Auth.OpenLoginPage()
-                    .LoginByCert("Саянова Кристина")
+                    .LoginByCert("Ахметов Викентий Филиппович")
                     .CloseTrainingPage();
             app.CreateDocuments//.StopMessageProcessing()
                                .ClickCreateDocumentButton()
                                .ClickClearButton()
-                               .SelectRecipient(INN, nameOfDepartment, nameOfOrganisation)
+                               //.SelectRecipient(INNofKZIO, nameOfDepartment, nameOfOrganisation)
+                               .SelectRecipient(INNofByteTest, nameOfDepartment, nameOfOrganizationByteTest)
                                .UploadDocument(FilesData.FormalizedFiles + FilesData.FormalizedSF820PrikazPath + FilesData.FormalizedSF820Prikaz);
             app.InputAuthorities.InputAuthorities(6, 2, "Руководитель", "Должностные обязанности");
             app.CreateDocuments.ClickSendDocumentButton();
@@ -99,12 +105,13 @@ namespace Taxnet.Tcrypt.Autotests
         public void SendDocumentUPD()
         {
             app.Auth.OpenLoginPage()
-                    .LoginByCert("Саянова Кристина")
+                    .LoginByCert("Ахметов Викентий Филиппович")
                     .CloseTrainingPage();
             app.CreateDocuments//.StopMessageProcessing()
                                .ClickCreateDocumentButton()
                                .ClickClearButton()
-                               .SelectRecipient(INN, nameOfDepartment, nameOfOrganisation)
+                               //.SelectRecipient(INNofKZIO, nameOfDepartment, nameOfOrganisation)
+                               .SelectRecipient(INNofByteTest, nameOfDepartment, nameOfOrganizationByteTest)
                                .UploadDocument(FilesData.FormalizedFiles + 
                                                FilesData.FormalizedUpd820Path + 
                                                FilesData.FormalizedUpd820Prikaz);
@@ -119,12 +126,13 @@ namespace Taxnet.Tcrypt.Autotests
         public void SendDocumentKSF()
         {
             app.Auth.OpenLoginPage()
-                    .LoginByCert("Саянова Кристина")
+                    .LoginByCert("Ахметов Викентий Филиппович")
                     .CloseTrainingPage();
             app.CreateDocuments//.StopMessageProcessing()
                                .ClickCreateDocumentButton()
                                .ClickClearButton()
-                               .SelectRecipient(INN, nameOfDepartment, nameOfOrganisation)
+                               //.SelectRecipient(INNofKZIO, nameOfDepartment, nameOfOrganisation)
+                               .SelectRecipient(INNofByteTest, nameOfDepartment, nameOfOrganizationByteTest)
                                .UploadDocument(FilesData.FormalizedFiles + FilesData.FormalizedKsfPath + FilesData.FormalizedKsfFile);
             app.InputAuthorities.InputAuthorities(3, 2, "Директор", "Должностные обязанности");
             app.CreateDocuments.ClickSendDocumentButton();
@@ -137,12 +145,13 @@ namespace Taxnet.Tcrypt.Autotests
         public void SendDocumentUKD()
         {
             app.Auth.OpenLoginPage()
-                    .LoginByCert("Саянова Кристина")
+                    .LoginByCert("Ахметов Викентий Филиппович")
                     .CloseTrainingPage();
             app.CreateDocuments//.StopMessageProcessing()
                                .ClickCreateDocumentButton()
                                .ClickClearButton()
-                               .SelectRecipient(INN, nameOfDepartment, nameOfOrganisation)
+                               //.SelectRecipient(INNofKZIO, nameOfDepartment, nameOfOrganisation)
+                               .SelectRecipient(INNofByteTest, nameOfDepartment, nameOfOrganizationByteTest)
                                .UploadDocument(FilesData.FormalizedFiles + FilesData.FormalizedUkdPath + FilesData.FormalizedUkdFiles);
             app.InputAuthorities.InputAuthorities(3, 4, "Директор", "Должностные обязанности");
             app.CreateDocuments.ClickSendDocumentButton();
@@ -156,12 +165,13 @@ namespace Taxnet.Tcrypt.Autotests
         {
             app.Auth
                 .OpenLoginPage()
-                .LoginByCert("Саянова Кристина")
+                .LoginByCert("Ахметов Викентий Филиппович")
                 .CloseTrainingPage();
             app.CreateDocuments
                 .ClickCreateDocumentButton()
                 .ClickClearButton()
-                .SelectRecipient(INN, nameOfDepartment, nameOfOrganisation)
+                //.SelectRecipient(INNofKZIO, nameOfDepartment, nameOfOrganisation)
+                .SelectRecipient(INNofByteTest, nameOfDepartment, nameOfOrganizationByteTest)
                 .UploadDocument(FilesData.UnformalizedFiles + FilesData.UnformalizedXmlFile)
                 .CloseInfoModalWindow()
                 .CheckFileUploaded(FilesData.UnformalizedXmlFile)

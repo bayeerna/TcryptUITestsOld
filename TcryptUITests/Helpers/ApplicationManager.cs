@@ -23,7 +23,7 @@ namespace Taxnet.Tcrypt.Autotests
         protected PrintFormsHelper printFormHelper;
         protected IncomingDocumentsHelper incomingDocuments;
         protected OutcomingDocumentsHelper outcomingDocuments;
-        protected MDOCreateHelper mdoCreate;
+        protected MDOCreateHelper mdoHelper;
         protected SearchHelper searchHelper;
         protected FilterHelper filterHelper;
         //protected MessageProcessingHelper messageProcessingHelper;
@@ -40,7 +40,7 @@ namespace Taxnet.Tcrypt.Autotests
             printFormHelper = new PrintFormsHelper(this);
             incomingDocuments = new IncomingDocumentsHelper(this);
             outcomingDocuments = new OutcomingDocumentsHelper(this);
-            mdoCreate = new MDOCreateHelper(this);
+            mdoHelper = new MDOCreateHelper(this);
             searchHelper = new SearchHelper(this);
             filterHelper = new FilterHelper(this);
             //messageProcessingHelper = new MessageProcessingHelper(this);
@@ -112,11 +112,11 @@ namespace Taxnet.Tcrypt.Autotests
             }
         }
 
-        public MDOCreateHelper MDOCreate
+        public MDOCreateHelper MDOHelper
         {
             get
             {
-                return mdoCreate;
+                return mdoHelper;
             }
         }
 

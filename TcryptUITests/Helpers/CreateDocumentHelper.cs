@@ -114,8 +114,7 @@ namespace Taxnet.Tcrypt.Autotests
             //Выбор подразделения
             var departmentField = By.CssSelector("#contragent-department-input > div > input");
             GetElement(departmentField).Click();
-            //actions.MoveToElement(driver.FindElement(By.CssSelector("#contragent-department-input > div > input"))).Click().Build().Perform();
-            
+
             GetElement(departmentField).SendKeys(department);
 
             GetElement(By.CssSelector("[data-contact*=\"Головное подразделение\"]")).Click();
@@ -128,11 +127,14 @@ namespace Taxnet.Tcrypt.Autotests
         /// </summary>
         public CreateDocumentHelper ClickSendDocumentButton()
         {
-            WaitForElementIsVisible(By.Id("signAndSendButtonId"),10);
-            ScrollToElement(driver.FindElement(By.Id("signAndSendButtonId")));
-            GetElement(By.Id("signAndSendButtonId")).Click();
+            var btnSignAndSend = By.Id("signAndSendButtonId");
+            WaitForElementToBeClickable(btnSignAndSend,10);
+            ScrollToElement(driver.FindElement(btnSignAndSend));
+            GetElement(btnSignAndSend).Click();
 
-            WaitForElementIsVisible(By.Id("closeBtn"), 5);
+            var loading = By.CssSelector("loading-overlay--div");
+            WaitUntilElementIsNotVisible(loading, 15);
+            WaitForElementIsVisible(By.Id("closeBtn"), 25);
             GetElement(By.Id("closeBtn")).Click();
             WaitUntilElementIsNotVisible(By.Id("closeBtn"), 5);
             return this;
@@ -177,7 +179,7 @@ namespace Taxnet.Tcrypt.Autotests
         public CreateDocumentHelper SelectTypeOfEdo(string type)
         {
             Actions actions = new Actions(driver);
-            GetElement(By.CssSelector(".Select-value")).Click();
+            GetElement(By.XPath("//div[@class='Select-control']")).Click();
             switch (type)
             {
                 case "Договор оперативного управления":
@@ -186,8 +188,13 @@ namespace Taxnet.Tcrypt.Autotests
                     break;
 
                 case "Договор безвозмездного пользования":
-                    IWebElement status2 = driver.FindElement(By.CssSelector("//*[contains(text(), 'Договор безвозмездного пользования')]"));
+                    IWebElement status2 = driver.FindElement(By.XPath("//*[contains(text(), 'Договор безвозмездного пользования')]"));
                     actions.MoveToElement(status2).Click().Build().Perform();
+                    break;
+
+                case "187 - Обмен актами приёма-передачи техники между МКУ УИТиС и КЗИО (2-х сторонний)":
+                    IWebElement status3 = driver.FindElement(By.XPath("//*[contains(text(), '187 - Обмен актами приёма-передачи техники между МКУ УИТиС и КЗИО (2-х сторонний)')]"));
+                    actions.MoveToElement(status3).Click().Build().Perform();
                     break;
             }
             return this;

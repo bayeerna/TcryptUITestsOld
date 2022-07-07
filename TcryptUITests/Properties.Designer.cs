@@ -94,5 +94,29 @@ namespace TcryptUITests {
                 this["NameOfKZIO"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1699253940")]
+        public string Inn_ByteTest {
+            get {
+                return ((string)(this["Inn_ByteTest"]));
+            }
+            set {
+                this["Inn_ByteTest"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ООО «БайтТест»")]
+        public string NameOfByte {
+            get {
+                return ((string)(this["NameOfByte"]));
+            }
+            set {
+                this["NameOfByte"] = value;
+            }
+        }
     }
 }

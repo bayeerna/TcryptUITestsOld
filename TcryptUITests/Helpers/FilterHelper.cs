@@ -50,7 +50,7 @@ namespace Taxnet.Tcrypt.Autotests
         /// <returns></returns>
         public FilterHelper SelectStateOfDocument(string state)
         {
-            OpenFilter();
+            //OpenFilter();
             Actions actions = new Actions(driver);
             List<IWebElement> listOfSelects = GetElements(By.CssSelector(".Select-arrow"));
             listOfSelects[0].Click();
@@ -119,7 +119,40 @@ namespace Taxnet.Tcrypt.Autotests
                     actions.Perform();
                     state8.Click();
                     break;
+
+                case "В процессе":
+                    var state9 = GetElement(By.XPath("//div[@class='Select-menu-outer']//div[@title='В процессе']"));
+                    actions.MoveToElement(state9);
+                    actions.Perform();
+                    state9.Click();
+                    break;
             }
+            return this;
+        }
+
+        /// <summary>
+        /// Выбор признака "Требуется действие"
+        /// </summary>
+        /// <returns></returns>
+        public FilterHelper SelectNeedAction()
+        {
+            var btnNeedAction = By.XPath("//label[@for='needAction1']");
+            WaitForElementToBeClickable(btnNeedAction, 15);
+            GetElement(btnNeedAction).Click();
+
+            return this;
+        }
+
+        /// <summary>
+        /// Ввод данных в поле "Тема"
+        /// </summary>
+        /// <param name="topic"></param>
+        /// <returns></returns>
+        public FilterHelper FillTopic(string topic)
+        {
+            var inputTopic = By.XPath("//input[@name='routingworkflowTheme']");
+            WaitForElementToBeClickable(inputTopic, 15);
+            GetElement(inputTopic).SendKeys(topic);
             return this;
         }
     }

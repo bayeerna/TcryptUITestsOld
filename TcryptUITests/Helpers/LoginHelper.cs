@@ -77,9 +77,9 @@ namespace Taxnet.Tcrypt.Autotests
 
             driver.FindElement(closeTrainingButton).Click();
 
-            var nameOfOrganization = By.XPath("//*[@id=\"root\"]/header[2]/nav/a[3]/div[1]/div");
-            //var nameOfOrganization = By.CssSelector(".organization-name");
-            WaitForElementIsVisible(nameOfOrganization, 15);
+            //var nameOfOrganization = By.XPath("//*[@id=\"root\"]/header[2]/nav/a[3]/div[1]/div");//div[@class='text-ellipsis-overflow nav-menu__organization-name']
+            var nameOfOrganization = By.XPath("//div[@class='text-ellipsis-overflow nav-menu__organization-name']");
+            WaitForElementIsVisible(nameOfOrganization, 30);
 
             var loading = By.CssSelector("loading-overlay--div");
             WaitUntilElementIsNotVisible(loading, 15);

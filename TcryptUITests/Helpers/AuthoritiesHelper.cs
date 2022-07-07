@@ -39,17 +39,17 @@ namespace Taxnet.Tcrypt.Autotests
             InputPost(post);
             InputBasis(basis);
             GetElement(By.Id("save-authorities")).Click();
-            if (GetElement(By.Id("confirmation-success")).Displayed)
+            /*if (GetElement(By.Id("confirmation-success")).Displayed)
             {
                 GetElement(By.Id("confirmation-success")).Click();
-            }
-            /*try
+            }*/
+            try
             {
                 driver.FindElement(By.Id("confirmation-success")).Click();
             }
             catch (Exception)
             {
-            }*/
+            }
             return this;
         }
 

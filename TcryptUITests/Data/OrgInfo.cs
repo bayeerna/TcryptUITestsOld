@@ -74,7 +74,7 @@
             organizations.Add(new OrgInfo()
             {
                 FullName = "Тестовый КЗИО",
-
+                Email="kostrovkzio@mail.ru",
                 Password = "12345678",
                 Hash = "18AFE15DB4C1339F1D1742AA3DD3C7F03B4ED4E8",
                 NameOfUser = "Костров Евгений",
@@ -98,6 +98,53 @@
                 Password = "12345678",
                 Hash = "9266FDE97ED9EF1FE358C4CE82FD2C50FB975364",
                 NameOfUser = "Петрунин Арсений Платонович",
+                Pin = "123",
+            });
+
+            organizations.Add(new OrgInfo()
+            {
+                FullName = "ООО «БайтТест»",
+
+                Password = "12345678",
+                Hash = "054EED35E6551FA71C5E5475CC22ED5D2D68D0BD",
+                NameOfUser = "Енотин Евдоким Егорович",
+                Pin = "123",
+            });
+
+            organizations.Add(new OrgInfo()
+            {
+                FullName = "ЗАО \"Фауст\"",
+
+                Password = "12345678",
+                Hash = "A4787C4A3FB2E772E33F47196C13E0EAB26241F8",
+                NameOfUser = "Ахметов Викентий Филиппович",
+                Pin = "123",
+            });
+
+            organizations.Add(new OrgInfo()
+            {
+                FullName = "МКУ Тестовое управление",
+                Email = "specupload@mail.ru",
+                Password = "12345678",
+                NameOfUser = "Специалист Загрузки",
+                Pin = "123",
+            });
+
+            organizations.Add(new OrgInfo()
+            {
+                FullName = "МКУ Тестовое управление",
+                Email = "spec_kom1@mail.ru",
+                Password = "12345678",
+                NameOfUser = "Специалист комиссии",
+                Pin = "123",
+            });
+
+            organizations.Add(new OrgInfo()
+            {
+                FullName = "МКУ Тестовое управление",
+                Email = "spec_kom2@mail.ru",
+                Password = "12345678",
+                NameOfUser = "Специалист 2",
                 Pin = "123",
             });
 

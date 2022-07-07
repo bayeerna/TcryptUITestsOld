@@ -90,7 +90,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Properties.settings</DependentUpon>
     </Compile>
-    <Compile Include="Fixtures\SendIngDocumentsFixture.cs" />
+    <Compile Include="Fixtures\CreateDocumentsFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

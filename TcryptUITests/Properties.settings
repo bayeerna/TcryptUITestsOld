@@ -20,5 +20,11 @@
     <Setting Name="NameOfKZIO" Type="System.String" Scope="User">
       <Value Profile="(Default)">КЗИО</Value>
     </Setting>
+    <Setting Name="Inn_ByteTest" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1699253940</Value>
+    </Setting>
+    <Setting Name="NameOfByte" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ООО «БайтТест»</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

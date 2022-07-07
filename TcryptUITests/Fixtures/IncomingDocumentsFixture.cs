@@ -18,7 +18,7 @@ namespace Taxnet.Tcrypt.Autotests
         public void AcceptIncomingUnformalizedDocument()
         {
             app.Auth.OpenLoginPage()
-                .LoginByCert("Костров Евгений")
+                .LoginByCert("Енотин Евдоким Егорович")
                 .CloseTrainingPage();
 
             app.SearchHelper.FillSearchParameters("Неизвестный", "На подписи/Требуется подпись", "Входящие");
@@ -37,7 +37,7 @@ namespace Taxnet.Tcrypt.Autotests
         public void RejectIncomingUnformalizedDocument()
         {
             app.Auth.OpenLoginPage()
-                .LoginByCert("Костров Евгений")
+                .LoginByCert("Енотин Евдоким Егорович")
                 .CloseTrainingPage();
 
             app.SearchHelper.FillSearchParameters("Неизвестный", "На подписи/Требуется подпись", "Входящие");
@@ -56,7 +56,7 @@ namespace Taxnet.Tcrypt.Autotests
         public void AcceptIncomingUKD()
         {
             app.Auth.OpenLoginPage()
-                .LoginByCert("Костров Евгений")
+                .LoginByCert("Енотин Евдоким Егорович")
                 .CloseTrainingPage();
 
             app.SearchHelper.FillSearchParameters("УКД", "На подписи/Требуется подпись", "Входящие");
@@ -75,7 +75,7 @@ namespace Taxnet.Tcrypt.Autotests
         public void AcceptIncomingUPD820()
         {
             app.Auth.OpenLoginPage()
-                .LoginByCert("Костров Евгений")
+                .LoginByCert("Енотин Евдоким Егорович")
                 .CloseTrainingPage();
 
             app.SearchHelper.FillSearchParameters("УПД820", "На подписи/Требуется подпись", "Входящие");
@@ -94,7 +94,7 @@ namespace Taxnet.Tcrypt.Autotests
         public void RejectIncomingUKD()
         {
             app.Auth.OpenLoginPage()
-                .LoginByCert("Костров Евгений")
+                .LoginByCert("Енотин Евдоким Егорович")
                 .CloseTrainingPage();
 
             app.SearchHelper.FillSearchParameters("УКД", "На подписи/Требуется подпись", "Входящие");
@@ -113,7 +113,7 @@ namespace Taxnet.Tcrypt.Autotests
         public void RejectIncomingUPD820()
         {
             app.Auth.OpenLoginPage()
-                .LoginByCert("Костров Евгений")
+                .LoginByCert("Енотин Евдоким Егорович")
                 .CloseTrainingPage();
 
             app.SearchHelper.FillSearchParameters("УПД820", "На подписи/Требуется подпись", "Входящие");
@@ -132,10 +132,11 @@ namespace Taxnet.Tcrypt.Autotests
         public void CancellationIncomingUnformalizedDocument()
         {
             app.Auth.OpenLoginPage()
-                .LoginByCert("Костров Евгений")
+                .LoginByCert("Енотин Евдоким Егорович")
                 .CloseTrainingPage();
 
-            app.Filter.SelectStateOfDocument("Завершен")
+            app.Filter.OpenFilter()
+                .SelectStateOfDocument("Завершен")
                 .ClickFoundInFilter();
 
             app.IncomingDocuments
@@ -152,11 +153,12 @@ namespace Taxnet.Tcrypt.Autotests
         public void ConfirmCancellationIncomingUnformalizedDocument()
         {
             app.Auth.OpenLoginPage()
-                .LoginByCert("Саянова Кристина")
+                .LoginByCert("Ахметов Викентий Филиппович")
                 .CloseTrainingPage();
 
             app.OutcomingDocuments.GoToOutcomingPage();
-            app.Filter.SelectStateOfDocument("Требуется аннулирование")
+            app.Filter.OpenFilter()
+                .SelectStateOfDocument("Требуется аннулирование")
                 .ClickFoundInFilter();
 
             app.IncomingDocuments

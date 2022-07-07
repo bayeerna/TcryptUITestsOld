@@ -63,10 +63,32 @@ namespace Taxnet.Tcrypt.Autotests
         /// <summary>
         /// Выбрать тип документа
         /// </summary>
-        public MDOCreateHelper SelectTypeOfDocument()
+        public MDOCreateHelper SelectTypeOfDocument(string type)
         {
+            /*GetElement(By.XPath("//div[@id='react-select-4--value']/div[@class='Select-value']")).Click();
+            //GetElement(By.XPath("//*[contains(text(), 'Акт о приеме-передаче')]")).Click();////div[@class='Select-menu-outer']//div[@title='Любой']
+            GetElement(By.XPath(
+                "div[@class='Select-menu-outer']//div[@title='Акт приема-передачи техники (орг.техники)']")).Click();*/
+
+            Actions actions = new Actions(driver);
             GetElement(By.XPath("//div[@id='react-select-4--value']/div[@class='Select-value']")).Click();
-            GetElement(By.XPath("//*[contains(text(), 'Акт о приеме-передаче')]")).Click();
+            switch (type)
+            {
+                case "Акт приема-передачи техники (орг.техники)":
+                    IWebElement type1 = driver.FindElement(By.XPath("//*[contains(text(), 'Акт приема-передачи техники (орг.техники)')]"));
+                    actions.MoveToElement(type1).Click().Build().Perform();
+                    break;
+
+                case "Акт о приеме-передаче объектов нефинансовых активов":
+                    IWebElement type2 = driver.FindElement(By.XPath("//*[contains(text(), 'Акт о приеме-передаче объектов нефинансовых активов')]"));
+                    actions.MoveToElement(type2).Click().Build().Perform();
+                    break;
+
+                case "Договор":
+                    IWebElement type3 = driver.FindElement(By.XPath("//*[contains(text(), 'Договор')]"));
+                    actions.MoveToElement(type3).Click().Build().Perform();
+                    break;
+            }
             return this;
         }
 
@@ -78,6 +100,60 @@ namespace Taxnet.Tcrypt.Autotests
             var btnSend = By.XPath("//button[@type='submit']");                                                                                                                         /// 
             WaitForElementToBeClickable(btnSend, 10);
             GetElement(btnSend).Click();
+            return this;
+        }
+
+        /// <summary>
+        /// Перейти в раздел "ЭДО по маршруту"
+        /// </summary>
+        public MDOCreateHelper GoToEDOPage()
+        {
+            driver.FindElements(By.XPath("//a[@class='c-section__link c-section__link--multilateral']/span[text()='ЭДО по маршруту']"))[1].Click();
+
+            var loading = By.XPath("//p[text()='Загрузка документов...']");
+            WaitUntilElementIsNotVisible(loading, 15);
+            return this;
+        }
+
+        /// <summary>
+        /// Согласование маршрутного ДО в карточке
+        /// </summary>
+        public MDOCreateHelper ApprovalDocument()
+        {
+            var btnApproval = By.XPath("//button[text()='Согласовать']");                                                                                                                         /// 
+            WaitForElementToBeClickable(btnApproval, 10);
+            GetElement(btnApproval).Click();
+
+            var inputComment = By.XPath("//textarea[@name='userComment']");
+            GetElement(inputComment).SendKeys("Согласование автотест");
+
+            var btnConfirmApproval = By.XPath("//div[@class='c-flex pr-2']/button[text()='Согласовать']");
+            GetElement(btnConfirmApproval).Click();
+
+            var commentField = By.XPath("//span[@class='accordion__content__comment--text']");
+            WaitForElementIsVisible(commentField,15);
+            var commentText= GetElement(By.XPath("//span[@class='accordion__content__comment--text']")).Text;
+            Assert.AreEqual("Согласование автотест", commentText);
+            return this;
+        }
+
+        /// <summary>
+        /// Отклонение маршрутного ДО в карточке
+        /// </summary>
+        public MDOCreateHelper RejectlDocument()
+        {
+            var btnReject = By.XPath("//button[text()='Отказать']");                                                                                                                         /// 
+            WaitForElementToBeClickable(btnReject, 10);
+            GetElement(btnReject).Click();
+
+            var inputComment = By.XPath("//textarea[@placeholder='Введите причину отказа']");
+            GetElement(inputComment).SendKeys("Отклонение автотест");
+
+            var btnConfirmReject = By.XPath("//div[@class='c-flex pr-2']/button[text()='Отказать']");
+            GetElement(btnConfirmReject).Click();
+
+            var stateReject = By.XPath("//div[@class='package-contents__document-state package-contents__document-state--refused package-contents__document-state__rejection-reason']");
+            WaitForElementIsVisible(stateReject, 15);
             return this;
         }
 
